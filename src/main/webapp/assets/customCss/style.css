@@ -1,0 +1,40 @@
+.mainSectionLeft {
+    background-color: #90EE90;
+    float: left;
+    width: 40%;
+    padding: 30px;
+    height: 90%;
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 16px;
+}
+
+.mainSectionRight {
+    background-color: #90EE90;
+    float: left;
+    width: 40%;
+    padding: 30px;
+    height: 90%;
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 16px;
+}
+
+
+.errors {
+    color: red;
+    text-align: left;
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 18px;
+}
+
+#submit {
+    color: black;
+    width: 70px;
+    height: 25px;
+    border: 1px solid #dbdbdb;
+    background: #ffffff;
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    font-size: 16px;
+}
+
+
+

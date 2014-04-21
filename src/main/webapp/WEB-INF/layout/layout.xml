@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+    <definition name="defaultLayout" template="/WEB-INF/layout/template/defaultViewTemplate.jsp">
+        <put-attribute name="title" value="defaultLayout"/>
+    </definition>
+
+    <definition name="protectedPages" template="/WEB-INF/layout/template/protectedViewTemplate.jsp">
+        <put-attribute name="title" value="protectedPages"/>
+        <put-attribute name="header" value="/WEB-INF/layout/template/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/template/footer.jsp"/>
+    </definition>
+
+    <definition name="lcPiece" template="/WEB-INF/layout/template/lcPieceViewTemplate.jsp">
+    </definition>
+
+    <definition name="rcPiece" template="/WEB-INF/layout/template/lcPieceViewTemplate.jsp">
+    </definition>
+
+    <definition name="combinedPages" template="/WEB-INF/layout/template/combinedViewTemplate.jsp">
+        <put-attribute name="title" value="combinedPages"/>
+        <put-attribute name="header" value="/WEB-INF/layout/template/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/template/footer.jsp"/>
+        <put-attribute name="contentLeft" value="lcPiece"/>
+        <put-attribute name="contentRight" value="rcPiece"/>
+    </definition>
+
+    <definition name="authPages" template="/WEB-INF/layout/template/authViewTemplate.jsp">
+        <put-attribute name="title" value="authPages"/>
+        <put-attribute name="header" value="/WEB-INF/layout/template/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/template/footer.jsp"/>
+    </definition>
+</tiles-definitions>
