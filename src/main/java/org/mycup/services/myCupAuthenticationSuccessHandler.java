@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by mariiarichka on 20.04.14.
  */
-public class myCupAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class MyCupAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 

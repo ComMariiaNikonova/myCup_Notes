@@ -1,5 +1,6 @@
 package org.mycup;
 
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -36,8 +37,8 @@ public class ApplicationInitializer implements WebApplicationInitializer {
         FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
         security.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
 
-//        FilterRegistration.Dynamic sessionInView = servletContext.addFilter("sessionInView", new OpenEntityManagerInViewFilter());
-//        sessionInView.addMappingForUrlPatterns(null, true, "/*");
+/*        FilterRegistration.Dynamic sessionInView = servletContext.addFilter("sessionInView", new OpenEntityManagerInViewFilter());
+        sessionInView.addMappingForUrlPatterns(null, true, "*//*");*/
 
         servletContext.addListener(new ContextLoaderListener(ctx));
 

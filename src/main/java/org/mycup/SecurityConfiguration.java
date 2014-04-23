@@ -1,8 +1,8 @@
 package org.mycup;
 
 import org.mycup.services.MyCupAuthenticationFailureHandler;
+import org.mycup.services.MyCupAuthenticationSuccessHandler;
 import org.mycup.services.MyCupUserDetailsService;
-import org.mycup.services.myCupAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,8 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -80,7 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         @Bean
     public AuthenticationSuccessHandler successHandler() {
-        return new myCupAuthenticationSuccessHandler();
+        return new MyCupAuthenticationSuccessHandler();
     }
 
     @Bean

@@ -1,15 +1,13 @@
 package org.mycup.services;
 
 import org.mycup.datastore.entity.User;
-import org.mycup.util.DataHolders.UserDataHolder;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mycup.util.dataHolders.UserDataHolder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
-import scala.sys.process.processInternal;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;

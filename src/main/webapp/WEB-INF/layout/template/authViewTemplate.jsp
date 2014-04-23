@@ -15,6 +15,7 @@
         <link href="/assets/bootstrap/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/bootstrap/bootstrap-3.1.1-dist/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="/assets/customCss/auth.css" rel="stylesheet">
+
         <script src="/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap-transition.js" type="text/script"></script>
         <script src="/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap-alert.js" type="text/script"></script>
         <script src="/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap-modal.js" type="text/script"></script>

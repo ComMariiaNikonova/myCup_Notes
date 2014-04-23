@@ -1,10 +1,7 @@
 package org.mycup.services;
 
 import org.apache.log4j.Logger;
-import org.mycup.datastore.dao.UserDAO;
-import org.mycup.datastore.entity.User;
-import org.mycup.util.DataHolders.UserDataHolder;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mycup.util.dataHolders.UserDataHolder;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
 import org.springframework.stereotype.Component;

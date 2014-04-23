@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../../codebase/webix.css" type="text/css" media="screen" charset="utf-8">
+		<script src="../../codebase/webix.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript" src="../common/testdata.js"></script>
+		<title>Disabled dates</title>
+	</head>
+	<style type="text/css">
+		#listA{
+			margin:20px;
+		}
+		body{
+			background: #faf6ed;
+		}
+		.webix_cal_day.cal_day_disabled{
+			background-color: #f4f4f4;
+		}
+	</style>
+	<body>
+		<div id="listA"></div>
+
+
+		<script type="text/javascript" charset="utf-8">
+
+			var startDate = new Date();
+			var endDate = webix.Date.add(new Date(),7,"day");
+
+			function isDisabled(date){
+				return date.valueOf() < startDate || date.valueOf() > endDate.valueOf();
+			}
+			function setCss(date){
+				var css = webix.Date.isHoliday(date);
+				if(isDisabled(date))
+					css += " "+"cal_day_disabled"
+				return css;
+			}
+
+			webix.ui({
+				container:"listA",
+				weekHeader:true,
+				view:"calendar",
+				events: setCss,
+				timepicker:true,
+				on:{
+					onBeforeDateSelect: function(date){
+						return !isDisabled(date);
+					}
+				}
+			});
+
+
+
+
+
+		</script>
+	</body>
+</html>

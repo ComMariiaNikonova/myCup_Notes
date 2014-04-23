@@ -1,6 +1,6 @@
 package org.mycup.services;
 
-import org.mycup.util.DataHolders.UserDataHolder;
+import org.mycup.util.dataHolders.UserDataHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
