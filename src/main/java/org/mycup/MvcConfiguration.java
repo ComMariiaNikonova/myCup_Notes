@@ -66,7 +66,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("auth/loginPage");
-        registry.addViewController("/app/libMain").setViewName("protected/libMain");
+        registry.addViewController("/app/libMainCombined").setViewName("protected/libMainCombined");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 

@@ -7,7 +7,7 @@ import org.mycup.datastore.entity.Role;
  */
 public class UserDataHolder {
 
-    String mailUser;
+    String mail;
     Role role;
     String password;
 
@@ -27,12 +27,12 @@ public class UserDataHolder {
         this.role = role;
     }
 
-    public String getMailUser() {
-        return mailUser;
+    public String getMail() {
+        return mail;
     }
 
-    public void setMailUser(String mailUser) {
-        this.mailUser = mailUser;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
 

@@ -7,9 +7,9 @@ package org.mycup.enums;
  */
 public enum UserRole {
 
-    ROLE_AUTH_USER,
-    ROLE_ADMIN,
-    ROLE_ANONYMOUS
+    USER,
+    ADMIN,
+    ANONYMOUS
 
 }
 

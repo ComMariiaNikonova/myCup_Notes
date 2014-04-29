@@ -23,8 +23,5 @@ public class MyCupAuthenticationFailureHandler  implements AuthenticationFailure
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException  exception) throws IOException, ServletException {
-     userDataHolder = new UserDataHolder();
-     String mail = userDataHolder.getMailUser();
-        log.debug("mail: ", mail);
     }
 }

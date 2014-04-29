@@ -29,7 +29,7 @@ public class MyCupUserDetailsService implements UserDetailsService {
         User user = userService.findByMail(mail);
         if (user==null){
             userDataHolder = new UserDataHolder();
-            userDataHolder.setMailUser(mail);
+            userDataHolder.setMail(mail);
         }
         final String username = user.getMail();
         final String password = user.getPassword();

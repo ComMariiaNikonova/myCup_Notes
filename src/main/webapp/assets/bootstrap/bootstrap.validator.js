@@ -83,6 +83,7 @@
     $.fn.bootstrap3Validate = function(success, data) {
         return this.validate({
             'init': function() {
+                var isSucces = true;
                 $('.has-error', this).removeClass('has-error').find('input,textarea').tooltip('destroy');
                 $('.alert').hide();
                 $('[rel=tooltip]', this).tooltip('destroy');
@@ -94,7 +95,7 @@
             },
             'fail': function(invalids) {
                 var form = this;
-
+                var isSucces = false;
                 $(invalids).closest('.form-group').addClass('has-error').find('input,select,textarea').each(function(i) {
                     var target = $(this);
                     var text = target.attr('data-title');
@@ -111,6 +112,7 @@
                         if(i == 0) {
                             $('.alert-danger', form).show().text(text);
                             this.focus();
+                            this.attr('isSuccess', isSucces);
                         }
                     }
                 });

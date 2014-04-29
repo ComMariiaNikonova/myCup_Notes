@@ -42,8 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
                 .permitAll()
-                .successHandler(successHandler())
-                .failureHandler(failureHandler())
+/*                .successHandler(successHandler())
+                .failureHandler(failureHandler())*/
                 .failureUrl("/login?login_error=true")
                 .defaultSuccessUrl("/home")
             .and()
@@ -57,6 +57,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/login")
                 .permitAll()
+                .antMatchers("/auth/**")
+                .permitAll()
+/*                .antMatchers("/protected*//**")
+                .permitAll()*/
                 .anyRequest().authenticated();
 
 

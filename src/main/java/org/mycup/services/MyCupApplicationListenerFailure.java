@@ -13,11 +13,8 @@ import org.springframework.stereotype.Component;
 public class MyCupApplicationListenerFailure
 implements ApplicationListener<AuthenticationFailureBadCredentialsEvent> {
 
-        UserDataHolder userDataHolder;
         private static final Logger log = Logger.getLogger(MyCupApplicationListenerFailure.class);
 
         public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent event) {
-            userDataHolder = new UserDataHolder();
-            String mail = userDataHolder.getMailUser();
         }
     }

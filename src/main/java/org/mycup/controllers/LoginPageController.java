@@ -14,7 +14,7 @@ import java.util.Map;
 @Controller
 public class LoginPageController {
 
-    public static final String PATH_TO_LOGIN_PAGE = "auth/loginPage";
+    public static final String PATH_TO_LOGIN_PAGE = "/auth/loginPage";
     public static final String PATH_TO_HOME_PAGE = "/protected/libMainCombined";
 
     private static final Logger log = LoggerFactory.getLogger(LoginPageController.class);

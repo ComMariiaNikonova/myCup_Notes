@@ -1,9 +1,11 @@
 package org.mycup.services;
 
+import org.mycup.datastore.dao.RoleDAO;
 import org.mycup.datastore.dao.UserDAO;
 import org.mycup.datastore.entity.Role;
 import org.mycup.datastore.entity.User;
 import org.mycup.util.dataHolders.UserDataHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.UserDataHandler;
 
@@ -18,20 +20,32 @@ import java.util.Set;
 @Service
 public class UserService {
 
-    @Resource
-    private UserDAO userDAO;
+
+    @Autowired
+    private UserDAO userRepository;
 
     public User findByMail (String mail) {
-        return userDAO.findByMail(mail);
+        return userRepository.findByMail(mail);
     }
 
-    public User createUser (UserDataHolder userData) {
-    User user = new User();
-    Set<Role> userRoles = new HashSet <Role> ();
-    userRoles.add(userData.getRole());
-    user.setMail(userData.getMailUser());
-    user.setPassword(userData.getPassword());
-    user.setRoles(userRoles);
-    return userDAO.save(user);
+    public User createUser (User user) {
+        User existingUser = userRepository.findByMail(user.getMail());
+
+        if (existingUser != null) {
+            throw new RuntimeException("Record already exists!");
+        }
+
+        return userRepository.save(user);
+    }
+
+    public Boolean delete(User user) {
+        User existingUser = userRepository.findByMail(user.getMail());
+
+        if (existingUser == null) {
+            return false;
+        }
+
+        userRepository.delete(existingUser);
+        return true;
     }
 }
