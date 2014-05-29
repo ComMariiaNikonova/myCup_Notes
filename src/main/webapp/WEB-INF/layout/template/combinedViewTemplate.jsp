@@ -41,7 +41,6 @@
         });
     </script>
 
-    <script src="/assets/jstree_pre1.0_stable/jquery.jstree.js"></script>
 </head>
 
 <body>
@@ -51,10 +50,10 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-<div id="sidebar-wrapper">
+<div id="page-content-wrapper">
     <tiles:insertAttribute name="contentLeft"/>
 </div>
-        <div id="page-content-wrapper">
+        <div id="sidebar-wrapper">
             <div class="content-header">
     <tiles:insertAttribute name="contentRight"/>
             </div>

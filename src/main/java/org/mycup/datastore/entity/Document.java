@@ -8,6 +8,8 @@ import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
+import java.util.Set;
+
 /**
  * Created by mariiarichka on 10.04.14.
  */
@@ -15,6 +17,7 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 public class Document {
 
     @GraphId
+    @Indexed
     private Long id;
 
     @Indexed
@@ -22,11 +25,16 @@ public class Document {
 
     private String content;
 
+    private Long creationDate;
+
     @RelatedTo(type = "CONTAIN", direction = Direction.INCOMING)
     private Library library;
 
     @RelatedTo(type = "OWN_DOCS", direction = Direction.INCOMING)
     private User owner;
+
+    @RelatedTo(type = "TAGS_INCOME", direction = Direction.INCOMING)
+    private Set<Tag> tags;
 
     public User getOwner() {
         return owner;
@@ -66,5 +74,21 @@ public class Document {
 
     public void setLibrary(Library library) {
         this.library = library;
+    }
+
+    public Long getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Long creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }

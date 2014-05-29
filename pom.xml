@@ -20,6 +20,7 @@
         <log4j.version>1.2.16</log4j.version>
         <jstl.version>1.2</jstl.version>
         <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
+        <file-name>myCup</file-name>
     </properties>
 
     <!-- Spring Dependencies-->
@@ -84,6 +85,12 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-neo4j-tx</artifactId>
             <version>${springdata.neo4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>neo4j-kernel</artifactId>
+                    <groupId>org.neo4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -111,6 +118,30 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.neo4j.app</groupId>
+            <artifactId>neo4j-server</artifactId>
+            <version>${neo4j.version}</version>
+            <classifier>static-web</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-jdk14</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>org.mortbay.jetty</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-shell</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.neo4j.app</groupId>
             <artifactId>neo4j-server</artifactId>
@@ -120,10 +151,25 @@
                     <artifactId>servlet-api</artifactId>
                     <groupId>org.mortbay.jetty</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-jdk14</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>org.mortbay.jetty</groupId>
+                </exclusion>
+
             </exclusions>
         </dependency>
 
         <!-- AspectJ -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-neo4j-aspects</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -196,6 +242,7 @@
         </dependency>
 
 
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -233,8 +280,17 @@
         </dependency>
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>neo4j-repo</id>
+            <name>Neo4jRepository</name>
+            <url>http://m2.neo4j.org/releases/</url>
+        </repository>
+    </repositories>
+
     <build>
-        <finalName>mycup</finalName>
+        <finalName>${file-name}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -249,6 +305,42 @@
                 <version>2.1.1</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14</version>
+                <configuration>
+                    <disableXmlReport>true</disableXmlReport>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includeGroupIds>org.neo4j.app</includeGroupIds>
+                    <includeArtifactIds>neo4j-server</includeArtifactIds>
+                    <includeClassifiers>static-web</includeClassifiers>
+                    <includes>webadmin-html/**</includes>
+                    <outputDirectory>target/${file-name}/WEB-INF/classes</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

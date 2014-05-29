@@ -21,6 +21,17 @@ public class Library {
     @Indexed
     private String libName;
 
+    public Long getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Long creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    private Long creationDate;
+
+
     @RelatedTo(type = "OWN_LIBS", direction = Direction.INCOMING)
     private User user;
 

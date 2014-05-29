@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
                 .logoutUrl("/logout/j_spring_security_logout")
+                .logoutSuccessUrl("/login")
             .and()
             .authorizeRequests()
                 .antMatchers("/assets/**")

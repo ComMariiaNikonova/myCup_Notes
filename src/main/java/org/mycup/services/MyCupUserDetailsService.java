@@ -1,5 +1,6 @@
 package org.mycup.services;
 
+import org.mycup.ApplicationContextProvider;
 import org.mycup.datastore.entity.User;
 import org.mycup.util.dataHolders.UserDataHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,19 +22,18 @@ public class MyCupUserDetailsService implements UserDetailsService {
 
     @Resource
     private UserService userService;
-    private UserDataHolder userDataHolder;
+
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername (String mail) throws UsernameNotFoundException {
-
+        UserDataHolder userDataHolder = ApplicationContextProvider.getApplicationContext().getBean(UserDataHolder.class);
         User user = userService.findByMail(mail);
         if (user==null){
-            userDataHolder = new UserDataHolder();
             userDataHolder.setMail(mail);
         }
         final String username = user.getMail();
         final String password = user.getPassword();
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();  //dto extends User
         authorities.add(new SimpleGrantedAuthority("USER"));
         return new org.springframework.security.core.userdetails.User(username, password, authorities);
     }
