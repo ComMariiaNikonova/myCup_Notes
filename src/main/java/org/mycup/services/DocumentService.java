@@ -1,7 +1,6 @@
 package org.mycup.services;
 
 import org.mycup.datastore.dao.DocumentDAO;
-import org.mycup.datastore.dao.LibraryDAO;
 import org.mycup.datastore.entity.Document;
 import org.mycup.datastore.entity.Library;
 import org.mycup.datastore.entity.Tag;

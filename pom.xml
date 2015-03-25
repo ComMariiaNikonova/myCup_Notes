@@ -22,11 +22,20 @@
         <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
         <file-name>myCup</file-name>
 
-<!--        <jUnit.version>4.4</jUnit.version>
+        <jUnit.version>4.4</jUnit.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
         <javax.validation.version>1.0.0.GA</javax.validation.version>
-        <org.apache.geronimo.specs.version>1.0</org.apache.geronimo.specs.version>-->
+        <org.apache.geronimo.specs.version>1.0</org.apache.geronimo.specs.version>
+        <org.springframework.data.version>2.1.0.RELEASE</org.springframework.data.version>
+        <commons-dbcp.version>1.2.2</commons-dbcp.version>
+
+        <maven-dependency-plugin.version>2.4</maven-dependency-plugin.version>
+        <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
+        <maven-surefire-plugin.version>2.14</maven-surefire-plugin.version>
+
+        <source.version>1.7</source.version>
+        <target.version>1.7</target.version>
     </properties>
 
     <!-- Spring Dependencies-->
@@ -108,7 +117,7 @@
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <version>1.2.2</version>
+            <version>${commons-dbcp.version}</version>
         </dependency>
 
         <!-- Neo4j -->
@@ -173,7 +182,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-neo4j-aspects</artifactId>
-            <version>2.1.0.RELEASE</version>
+            <version>${org.springframework.data.version}</version>
         </dependency>
 
         <dependency>
@@ -190,12 +199,12 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.0.0.GA</version>
+            <version>${javax.validation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jpa_2.0_spec</artifactId>
-            <version>1.0</version>
+            <version>${org.apache.geronimo.specs.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -203,7 +212,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>${jUnit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -251,7 +260,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -281,7 +290,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${org.springframework.version}</version>
         </dependency>
 
     </dependencies>
@@ -300,14 +309,14 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -323,7 +332,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.14</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <disableXmlReport>true</disableXmlReport>
                 </configuration>
@@ -331,7 +340,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.4</version>
+                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>

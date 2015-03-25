@@ -5,9 +5,6 @@
 
 
 <link rel="stylesheet" type="text/css" href="/assets/neo4jScripts/common/css/style.css">
-<%--<h3>
-    <spring:message code='header.message'/>
-</h3>--%>
 <div class="ui-widget">
 <h1><span> &nbsp;Welcome to MyCup </span></h1>
 <span> &nbsp;&nbsp;Manage your Ideas and Notes!</span>

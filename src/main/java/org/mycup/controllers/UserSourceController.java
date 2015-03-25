@@ -19,12 +19,7 @@ public class UserSourceController {
 
     private static final Logger log = LoggerFactory.getLogger(UserSourceController.class.getName());
 
-/*    @RequestMapping(value = "libMainCombined", method = RequestMethod.GET)
-    public ModelAndView provideLibMainCombined(Map<String, ?> model) {
-        log.info("Welcome controller works correctly for libMain");
-        return new ModelAndView(PATH_TO_MAIN_LIB_COMBINED_PAGE, model);
 
-    }*/
     @RequestMapping(value = "libMainCombined", method = RequestMethod.GET)
     public ModelAndView provideLibMainCombined(Map<String, ?> model) {
         log.info("Welcome controller works correctly for libMain");

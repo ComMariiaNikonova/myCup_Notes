@@ -14,6 +14,5 @@ import java.util.Set;
 @Repository
 public interface LibraryDAO extends CRUDRepository<Library> {
     Library findByUser(User user);
-   // Set<Document> findByUser (); //can be founded only all set or one document?
 
 }

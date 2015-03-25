@@ -1,12 +1,10 @@
 package org.mycup.services;
 
-import org.mycup.datastore.dao.DocumentDAO;
 import org.mycup.datastore.dao.TagDAO;
 import org.mycup.datastore.entity.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 /**
  * Created by user on 29.05.14.

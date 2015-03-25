@@ -36,33 +36,6 @@ public class Neo4jConfig extends Neo4jConfiguration {
 
     @Resource
     private Environment env;
-/*For embeded DB*/
-/*    @Bean
-    public GraphDatabaseService graphDatabaseService() {
-        Map<String, String> params = new HashMap<>();
-        params.put("enable_remote_shell", "true");
-        params.put("dump_configuration", "true");
-        return new EmbeddedGraphDatabase(env.getProperty(NEO4J_DATA_LOCATION_PROPERTY), params);
-    }*/
-/*For embeded DB*/
-   /* @Bean
-    public TransactionManagementConfigurer neo4jTansactionManagementConfigurer() {
-        return new TransactionManagementConfigurer() {
-            @Override
-            public PlatformTransactionManager annotationDrivenTransactionManager() {
-                return neo4jTransactionManager();
-            }
-        };
-    }*/
-/*For embeded DB*/
-/*    @Bean
-    public JtaTransactionManager neo4jTransactionManager() {
-        JtaTransactionManager transactionManager = new JtaTransactionManager();
-        transactionManager.setTransactionManager(new SpringTransactionManager((EmbeddedGraphDatabase) graphDatabaseService()));
-        transactionManager.setUserTransaction(new UserTransactionImpl((EmbeddedGraphDatabase) graphDatabaseService()));
-        return transactionManager;
-    }*/
-
 
     @Bean
     public GraphDatabaseService graphDatabaseService() {

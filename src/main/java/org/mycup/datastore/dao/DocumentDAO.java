@@ -5,8 +5,6 @@ import org.mycup.datastore.entity.Library;
 import org.springframework.data.neo4j.repository.CRUDRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
 /**
  * Created by mariiarichka on 11.04.14.
  */

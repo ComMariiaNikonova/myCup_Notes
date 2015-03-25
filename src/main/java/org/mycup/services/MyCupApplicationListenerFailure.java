@@ -1,7 +1,6 @@
 package org.mycup.services;
 
 import org.apache.log4j.Logger;
-import org.mycup.util.dataHolders.UserDataHolder;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
 import org.springframework.stereotype.Component;

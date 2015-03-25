@@ -1,7 +1,5 @@
 package org.mycup.controllers;
 
-import org.mycup.datastore.dao.RoleDAO;
-import org.mycup.datastore.dao.UserDAO;
 import org.mycup.datastore.entity.*;
 import org.mycup.enums.UserRole;
 import org.mycup.services.DocumentService;
@@ -12,18 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
-import org.springframework.web.servlet.support.RequestContextUtils;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
@@ -35,8 +24,6 @@ import java.util.Set;
 @Controller
 public class SignInController {
 
-
-    /*public static final String PATH_TO_HOME_PAGE = "/protected/libMainCombined";*/
     public static final String PATH_TO_HOME_PAGE = "/protected/userPage";
 
     public static final String CREATE_NEW_USER = "/auth/CreateNewUser";
@@ -99,8 +86,6 @@ public class SignInController {
         newUser.getRoles().add(newRole);
         newUser.setMail(name);
         newUser.setPassword(password);
-/*      newUser.setMail("test13@test");
-        newUser.setPassword("test");*/
 
         newUser.setRoles(newUser.getRoles());
         User user = service.createUser(newUser);

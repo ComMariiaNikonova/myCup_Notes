@@ -1,9 +1,7 @@
 package org.mycup.enums;
 
 /**
- * User: mnikonova
- * Date: 4/2/13
- * To change this template use File | Settings | File Templates.
+ * Created by mariiarichka on 11.04.14.
  */
 public enum UserRole {
 

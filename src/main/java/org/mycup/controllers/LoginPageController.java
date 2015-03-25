@@ -15,7 +15,6 @@ import java.util.Map;
 public class LoginPageController {
 
     public static final String PATH_TO_LOGIN_PAGE = "/auth/loginPage";
-    /*public static final String PATH_TO_HOME_PAGE = "/protected/libMainCombined";*/
 
     public static final String PATH_TO_HOME_PAGE = "/protected/userPage";
 

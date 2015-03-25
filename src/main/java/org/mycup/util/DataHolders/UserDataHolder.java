@@ -1,14 +1,12 @@
 package org.mycup.util.dataHolders;
 
 import org.mycup.datastore.entity.Role;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by mariiarichka on 21.04.14.
  */
 @Component
-//@Scope("session")
 public class UserDataHolder {
 
     String mail;
