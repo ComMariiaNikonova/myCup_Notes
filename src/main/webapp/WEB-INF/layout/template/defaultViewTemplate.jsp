@@ -4,18 +4,9 @@
 
 <html>
 <head>
-    <title>
-        <tiles:getAsString name="title"/>
-    </title>
-    <link rel="stylesheet" href="/assets/customCss/style.css" type="text/css"/>
+
 </head>
 <body>
-<div class="mainSectionLeft">
-    <tiles:insertAttribute name="contentLeft"/>
-</div>
-<div class="mainSectionRight">
-    <tiles:insertAttribute name="contentRight"/>
-</div>
 
 </body>
 </html>

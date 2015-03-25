@@ -25,7 +25,7 @@ public class Document {
 
     private String content;
 
-    private Long creationDate;
+    private String creationDate;
 
     @RelatedTo(type = "CONTAIN", direction = Direction.INCOMING)
     private Library library;
@@ -76,11 +76,11 @@ public class Document {
         this.library = library;
     }
 
-    public Long getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Long creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 

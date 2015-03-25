@@ -2,15 +2,17 @@ package org.mycup.controllers;
 
 import org.mycup.datastore.dao.RoleDAO;
 import org.mycup.datastore.dao.UserDAO;
-import org.mycup.datastore.entity.Library;
-import org.mycup.datastore.entity.Role;
-import org.mycup.datastore.entity.User;
+import org.mycup.datastore.entity.*;
 import org.mycup.enums.UserRole;
+import org.mycup.services.DocumentService;
 import org.mycup.services.LibraryService;
+import org.mycup.services.TagService;
 import org.mycup.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,23 +36,34 @@ import java.util.Set;
 public class SignInController {
 
 
-    public static final String PATH_TO_HOME_PAGE = "/protected/libMainCombined";
-    public static final String CREATE_NEW_USER="/auth/CreateNewUser";
-    public static final String REST_CREATE_NEW_USER="/auth/rest/CreateNewUser";
-    /*public static final String REST_CREATE_NEW_USER="/auth/CreateNewUser";*/
+    /*public static final String PATH_TO_HOME_PAGE = "/protected/libMainCombined";*/
+    public static final String PATH_TO_HOME_PAGE = "/protected/userPage";
+
+    public static final String CREATE_NEW_USER = "/auth/CreateNewUser";
+    public static final String REST_CREATE_NEW_USER = "/auth/rest/CreateNewUser";
+
     @Autowired
     private UserService service;
     @Autowired
     LibraryService libService;
+    @Autowired
+    DocumentService docService;
+    @Autowired
+    TagService tagService;
+    @Autowired
+    private ApplicationContext context;
+
 
     private static final Logger log = LoggerFactory.getLogger(SignInController.class);
-/*For Rest API:*/
-    @RequestMapping(value=REST_CREATE_NEW_USER, method=RequestMethod.POST)
-    public @ResponseBody User create(
+
+    /*For Rest API:*/
+    @RequestMapping(value = REST_CREATE_NEW_USER, method = RequestMethod.POST)
+    public
+    @ResponseBody
+    User create(
             @RequestParam String name,
             @RequestParam String password) {
-        /*UserService service = new UserService();*/
-        Set <Role> roles = new HashSet<Role>();
+        Set<Role> roles = new HashSet<Role>();
         User newUser = new User();
         Role newRole = new Role();
 
@@ -68,22 +82,18 @@ public class SignInController {
 
 
         newUser.setRoles(newUser.getRoles());
-        return service.createUser (newUser);
+        return service.createUser(newUser);
     }
 
-    @RequestMapping(value=CREATE_NEW_USER, method=RequestMethod.POST/*, headers = "Content-Type: application/json"*/)
-    public String createUser (@RequestParam String name,
-                              @RequestParam String password
-                             /* @RequestBody Library userLibrary*/) {
-    /*    UserService service = new UserService();
-        LibraryService libService = new LibraryService();*/
-        Set <Role> roles = new HashSet<Role>();
+    @RequestMapping(value = CREATE_NEW_USER, method = RequestMethod.POST)
+    public String createUser(@RequestParam String name,
+                             @RequestParam String password
+    ) {
+        Set<Role> roles = new HashSet<Role>();
         User newUser = new User();
         Role newRole = new Role();
 
         newRole.setRole(UserRole.USER);
-
-
         newUser.setRoles(roles);
 
         newUser.getRoles().add(newRole);
@@ -92,41 +102,26 @@ public class SignInController {
 /*      newUser.setMail("test13@test");
         newUser.setPassword("test");*/
 
-
         newUser.setRoles(newUser.getRoles());
-        User user = service.createUser (newUser);//
-        if(user.getLibrary()==null){
-           Library library = libService.createLibrary(user);
-           user.setLibrary(library);
+        User user = service.createUser(newUser);
+        /*can be get out to service*/
+        if (user.getLibrary() == null) {
+            Library library = libService.createLibrary(user);
+            user.setLibrary(library);
+            String firstDocContent = context.getMessage("first.content", null, Locale.getDefault());
+            String firstDocTag = context.getMessage("first.tag", null, Locale.getDefault());
+            Tag tag = tagService.createTag(firstDocTag);
+            Set<Tag> tags = new HashSet<Tag>();
+            tags.add(tag);
+            docService.createDocument(library, library.getLibName(), firstDocContent, user, tags);
         }
-/*        RedirectAttributes redirectAttributes = new RedirectAttributesModelMap();
-        redirectAttributes.addFlashAttribute("userLibrary", user.getLibrary());*/
-        return "redirect:/auth/home" ;
-        }
+        return "redirect:/auth/home";
+    }
 
     @RequestMapping(value = "/auth/home", method = RequestMethod.GET)
-    public ModelAndView provideHomePage(Map<String, ?> model, HttpServletRequest request
-                                        /*@RequestParam Library userLibrary*/) {
-        Map<String,?> map = RequestContextUtils.getInputFlashMap(request);
+    public ModelAndView provideHomePage(Map<String, ?> model) {
         log.info("Welcome controller works correctly for home page");
         return new ModelAndView(PATH_TO_HOME_PAGE, model);
     }
-
-/*    @RequestMapping(method = RequestMethod.POST)
-    public String onSubmit(Foo foo, BindingResult errors,
-                           HttpServletRequest request, HttpServletResponse response) throws
-            Exception {
-        boolean isNew = (foo.getId() == null);
-        String success = getSuccessView();
-        if (request.getParameter("delete") != null) {
-            fooManager.remove(foo.getId());
-        } else {
-            fooManager.save(foo);
-            if (!isNew) {
-                success = "redirect:fooform?id=" + foo.getId();
-            }
-        }
-        return success;
-    }*/
 }
 

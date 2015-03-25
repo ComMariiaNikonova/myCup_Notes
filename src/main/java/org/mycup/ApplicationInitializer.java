@@ -36,7 +36,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 
         FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
         security.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
-
+/*For embeded DB*/
 /*        FilterRegistration.Dynamic sessionInView = servletContext.addFilter("sessionInView", new OpenEntityManagerInViewFilter());
         sessionInView.addMappingForUrlPatterns(null, true, "*//*");*/
 

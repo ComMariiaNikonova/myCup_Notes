@@ -19,8 +19,6 @@ import java.io.IOException;
 public class MyCupAuthenticationFailureHandler  implements AuthenticationFailureHandler {
     private static final Logger log = LoggerFactory.getLogger(MyCupAuthenticationFailureHandler.class);
 
-    UserDataHolder userDataHolder;
-
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException  exception) throws IOException, ServletException {
     }

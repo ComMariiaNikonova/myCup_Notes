@@ -26,11 +26,12 @@ public class MyCupUserDetailsService implements UserDetailsService {
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername (String mail) throws UsernameNotFoundException {
-        UserDataHolder userDataHolder = ApplicationContextProvider.getApplicationContext().getBean(UserDataHolder.class);
+      /*  UserDataHolder userDataHolder = ApplicationContextProvider.getApplicationContext().getBean(UserDataHolder.class);*/
+        //UserDataHolder userDataHolder = new UserDataHolder();
         User user = userService.findByMail(mail);
-        if (user==null){
+/*        if (user==null){
             userDataHolder.setMail(mail);
-        }
+        }*/
         final String username = user.getMail();
         final String password = user.getPassword();
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();  //dto extends User

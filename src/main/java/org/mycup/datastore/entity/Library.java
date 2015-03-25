@@ -21,15 +21,15 @@ public class Library {
     @Indexed
     private String libName;
 
-    public Long getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
-    }
+    } //Date format
 
-    public void setCreationDate(Long creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
-    private Long creationDate;
+    private String creationDate;
 
 
     @RelatedTo(type = "OWN_LIBS", direction = Direction.INCOMING)

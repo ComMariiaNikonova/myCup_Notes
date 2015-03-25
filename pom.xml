@@ -21,6 +21,12 @@
         <jstl.version>1.2</jstl.version>
         <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
         <file-name>myCup</file-name>
+
+<!--        <jUnit.version>4.4</jUnit.version>
+        <javax.servlet.version>3.0.1</javax.servlet.version>
+        <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
+        <javax.validation.version>1.0.0.GA</javax.validation.version>
+        <org.apache.geronimo.specs.version>1.0</org.apache.geronimo.specs.version>-->
     </properties>
 
     <!-- Spring Dependencies-->
@@ -240,7 +246,6 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
 
 
         <dependency>

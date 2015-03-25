@@ -6,7 +6,7 @@
 <tiles-definitions>
 
     <definition name="defaultLayout" template="/WEB-INF/layout/template/defaultViewTemplate.jsp">
-        <put-attribute name="title" value="defaultLayout"/>
+
     </definition>
 
     <definition name="protectedPages" template="/WEB-INF/layout/template/protectedViewTemplate.jsp">

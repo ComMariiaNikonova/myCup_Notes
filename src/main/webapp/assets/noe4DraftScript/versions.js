@@ -1,0 +1,1 @@
+var availableDocVersions = ["stable","snapshot","milestone","2.1.2","2.1.2","2.0.3","1.9.8","1.8.3"];

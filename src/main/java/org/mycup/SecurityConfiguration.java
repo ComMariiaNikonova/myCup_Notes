@@ -36,22 +36,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login/j_spring_security_check")
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
                 .permitAll()
-/*                .successHandler(successHandler())
-                .failureHandler(failureHandler())*/
                 .failureUrl("/login?login_error=true")
                 .defaultSuccessUrl("/home")
-            .and()
-            .logout()
+                .and()
+                .logout()
                 .logoutUrl("/logout/j_spring_security_logout")
                 .logoutSuccessUrl("/login")
-            .and()
-            .authorizeRequests()
+                .and()
+                .authorizeRequests()
                 .antMatchers("/assets/**")
                 .permitAll()
                 .antMatchers("/layout/**")
@@ -60,28 +58,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/auth/**")
                 .permitAll()
-/*                .antMatchers("/protected*//**")
-                .permitAll()*/
                 .anyRequest().authenticated();
 
 
     }
-/*    @Bean
-    public SimpleUrlAuthenticationFailureHandler failureHandler() {
-        return new SimpleUrlAuthenticationFailureHandler();
-    }*/
-
 
     @Bean
     public AuthenticationFailureHandler failureHandler() {
         return new MyCupAuthenticationFailureHandler();
     }
-/*    @Bean
-    public SimpleUrlAuthenticationSuccessHandler successHandler() {
-        return new SimpleUrlAuthenticationSuccessHandler();
-    }*/
 
-        @Bean
+    @Bean
     public AuthenticationSuccessHandler successHandler() {
         return new MyCupAuthenticationSuccessHandler();
     }
